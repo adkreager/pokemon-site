@@ -31,6 +31,8 @@ class App extends React.Component {
           <Header />
             <ul id="list">
               <PokemonList allPokemon = {this.state.allPokemon} urlPokemon = {this.state.urlPokemon} />
+              <img src="https://pokeres.bastionbot.org/images/pokemon/151.png" alt="mew" />}
+
             </ul>
           </div>
         </header>
