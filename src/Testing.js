@@ -1,5 +1,3 @@
-// Getting nested data
-
 const { render } = require("@testing-library/react");
 import React, {useState, useEffect} from 'react'
 const { useState, useEffect } = require("react");
