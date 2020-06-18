@@ -13,6 +13,7 @@ const Header = (props) => {
                     <li><button>Collection</button></li>
                     <li><button>Grocery</button></li>
                     <li><button>Battle</button></li>
+                    <img src="http://www.pngmart.com/files/2/Pokeball-PNG-Photos.png" alt="pokeball" id="pokeball" />
                 </div>
             </ul>
         </nav>
