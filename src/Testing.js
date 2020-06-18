@@ -52,3 +52,7 @@ function Pokemon(props) {
 })
 
 //export default Pokemon
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+// make first letter of a string uppercase
+element.name.charAt(0).toUpperCase() + element.name.slice(1)
