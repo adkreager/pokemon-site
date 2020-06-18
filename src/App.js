@@ -17,7 +17,7 @@ class App extends React.Component {
 
       let data = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
       .then (result =>  result.json())
-      .then (data => this.setState({allPokemon: data.results.map(element => [element.name])}))
+      .then (data => this.setState({allPokemon: data.results.map(element => [element.name.charAt(0).toUpperCase() + element.name.slice(1)])}))
 
       data = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
       .then (result =>  result.json())
