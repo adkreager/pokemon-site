@@ -1,5 +1,9 @@
 .App {
   /* text-align: center; */
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .App-logo {
@@ -15,12 +19,10 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
-  min-width: 100vw;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
+  /* align-self: center;
+  justify-self: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -36,6 +38,14 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #282c34;
 }
 
 button {
@@ -65,9 +75,24 @@ ul {
 
 #list {
   display: flex;
-  flex-direction: column;
+  flex-flow: row wrap;
+}
+
+img {
+  width: 12vw;
 }
 
 #pokeball {
   height: 5vh;
+  width: 5vh;
+}
+
+#pokeItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#pokemon-img {
+  width: 30vw;
 }

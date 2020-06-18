@@ -3,40 +3,54 @@ import logo from './logo.svg';
 import SearchBar from './SearchBar'
 import Header from './Header'
 import './App.css';
-import PokemonList from './PokemonList'
+import PokemonItem from './PokemonItem'
 
 class App extends React.Component {
-    state = {
-      currentPokemon : [],
-      allPokemon: [],
-      urlPokemon: [],
-      food: [],
-      collection: [],
-    }
+  state = {
+    currentPokemon: [],
+    allPokemon: [],
+    food: [],
+    collection: [],
+  }
 
   async componentDidMount() {
-      let data = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
+      let data = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=807')
       .then (result =>  result.json())
-      .then (data => this.setState({allPokemon: data.results.map(element => [element.name.charAt(0).toUpperCase() + element.name.slice(1)])}))
-
-      data = fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=151')
-      .then (result =>  result.json())
-      .then (data => this.setState({urlPokemon: data.results.map(element => [element.url])}))
+      .then (data => this.setState({allPokemon: data.results.map(element => [element.name])}))
   }
+
+
+  getAllPictures() {
+    let container = []
+    for (let i = 1; i < 808; i++) {
+        let id = i;
+        let url = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/' + i + '.png'
+        let urlData = 'https://pokeapi.co/api/v2/pokemon/' + id 
+        container.push(<img id = {id} src={url} onClick={() => this.getPokeURL(urlData)} ></img>)
+    }
+    return container
+  }
+
+  getPokeURL(urlData) {
+    window.scrollTo(0,0)
+    let data = fetch(urlData)
+      .then(result => result.json())
+      .then(data => this.setState({ currentPokemon: data })) 
+  }
+
 
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <div>
-          <Header />
-            <ul id="list">
-              <PokemonList allPokemon = {this.state.allPokemon} urlPokemon = {this.state.urlPokemon} />
-              <img src="https://pokeres.bastionbot.org/images/pokemon/151.png" alt="mew" />
-
-            </ul>
-          </div>
-        </header>
+          <Header props = {this.state}/> 
+        </header>         
+        <body>
+          <PokemonItem currentPokemon = {this.state.currentPokemon} /> 
+          <ul id="list">
+            {this.getAllPictures()}
+          </ul>
+        </body>
       </div>
     );
   }

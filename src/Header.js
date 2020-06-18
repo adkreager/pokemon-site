@@ -6,7 +6,7 @@ const Header = (props) => {
         <nav>
             <ul>
                 <div id="left-header">
-                    <SearchBar />
+                    <SearchBar props = {props}/>
                     <li><button>View All</button></li>
                 </div>
                 <div id="right-header">

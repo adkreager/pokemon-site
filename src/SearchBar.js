@@ -1,24 +1,34 @@
 import React, { PureComponent } from 'react'
 
-class SearchBar extends PureComponent {
-    constructor(props) {
-        super(props)
+const SearchBar = (props) => {
 
-        this.state = {
-            
-        }
-    }
+    function getPokeURL(urlData) {
+        window.scrollTo(0,0)
+        let data = fetch(urlData)
+          .then(result => result.json())
+          .then(data => this.setState({ currentPokemon: data })) 
+      }    
+    
+    function search_pokemon() { 
+        let input = document.getElementById('searchbar').value
+        input = input.toLowerCase(); 
+        let x = props.props.allPokemon; 
 
+        for (let i = 0; i < x.length; i++) {  
+            if (x[i].includes(input)) { 
+                let url = 'https://pokeapi.co/api/v2/pokemon/' + x[i];
+                getPokeURL(url);
+            } 
+        } 
+    } 
 
-
-    render() {
-        return (
-            <form action="">
-                <input type='text' placeholder="Search..."></input>
-                <button type='submit'>Search</button>
-            </form>
-        )
-    }
+    return (
+        <form >
+            <input type='text' id ='searchbar' placeholder="Search..."></input>
+            {/* <input type='submit' ></input> */}
+            <button type='button' onClick={search_pokemon()}> Search </button>
+        </form>
+    )
 }
 
 export default SearchBar
